@@ -1,6 +1,6 @@
 import React from 'react';
 import UsersTable from './UsersTable';
-import axios from 'axios';
+import UsersService from './services/UsersService';
 
 class UsersIndex extends React.Component {
 
@@ -18,17 +18,8 @@ class UsersIndex extends React.Component {
   }
 
   componentDidMount() {
-    const url = 'http://localhost:8085/api/v1/users';
-
-    axios.request({
-      url: url,
-      method: 'get',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-      },
-      data: {},// Important: keep data empty so the header "Content-Type" is not removed
-    }).then((response) => this.setState({users: response.data}));
+    UsersService.getAllUsers().
+        then((response) => this.setState({users: response.data}));
   }
 }
 

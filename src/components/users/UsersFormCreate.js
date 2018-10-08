@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import {toast} from 'react-toastify';
+import UsersService from './services/UsersService';
 
 class UsersFormCreate extends React.Component {
 
@@ -14,25 +14,9 @@ class UsersFormCreate extends React.Component {
       return;
     }
 
-    const url = 'http://localhost:8085/api/v1/users';
-
     const data = new FormData(event.target);
 
-    // console.log(data.get('username'));
-    axios.request({
-      url: url,
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-      },
-      data: {
-        name: data.get('name'),
-        username: data.get('username'),
-        email: data.get('email'),
-        password: data.get('password'),
-      },
-    }).then((response) => {
+    UsersService.createUser(data).then((response) => {
       const {name, email} = response.data;
       toast.success(`User created: ${name} ${email}`);
     });
