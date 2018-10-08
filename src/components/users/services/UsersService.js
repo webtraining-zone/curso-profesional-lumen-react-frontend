@@ -3,6 +3,11 @@ import {API_BASE_URL} from '../../../config/api';
 
 class UsersService {
 
+  headers = {
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
+  };
+
   // data: FormData (https://developer.mozilla.org/en-US/docs/Web/API/FormData)
   static createUser(data) {
     const url = `${API_BASE_URL}/users`;
@@ -10,10 +15,7 @@ class UsersService {
     return axios.request({
       url: url,
       method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-      },
+      headers: this.constructor.headers,
       data: {
         name: data.get('name'),
         username: data.get('username'),
@@ -29,10 +31,22 @@ class UsersService {
     return axios.request({
       url: url,
       method: 'get',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-      },
+      headers: this.constructor.headers,
+      data: {},// Important: keep data empty so the header "Content-Type" is not removed
+    });
+  }
+
+  static deleteUser(user) {
+
+    if (typeof user === 'undefined') {
+      throw new Error('No user ID was provided on deleteUser method');
+    }
+
+    const url = `${API_BASE_URL}/users/${user.id}`;
+    return axios.request({
+      url: url,
+      method: 'delete',
+      headers: this.constructor.headers,
       data: {},// Important: keep data empty so the header "Content-Type" is not removed
     });
   }
