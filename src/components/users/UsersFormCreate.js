@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {toast} from 'react-toastify';
 
 class UsersFormCreate extends React.Component {
 
@@ -9,6 +10,7 @@ class UsersFormCreate extends React.Component {
     if (!event.target.checkValidity()) {
       // form is invalid! so we do nothing
       console.warn('Invalid!');
+      toast.error('Please, fill all the required fields!');
       return;
     }
 
@@ -27,10 +29,13 @@ class UsersFormCreate extends React.Component {
       data: {
         name: data.get('name'),
         username: data.get('username'),
-        email: data.get('username'),
+        email: data.get('email'),
         password: data.get('password'),
       },
-    }).then((response) => console.log('User created!', response.data));
+    }).then((response) => {
+      const {name, email} = response.data;
+      toast.success(`User created: ${name} ${email}`);
+    });
 
   };
 
@@ -45,28 +50,28 @@ class UsersFormCreate extends React.Component {
               <form onSubmit={this.handleSubmitWithFormData} noValidate>
 
                 <div className="form-group">
-                  <label htmlFor="name">Name:</label>
+                  <label htmlFor="name">Name* :</label>
                   <input id="name" name="name" className="form-control"
-                         type="text"/>
+                         type="text" required/>
                 </div>
 
 
                 <div className="form-group">
-                  <label htmlFor="username">Email:</label>
+                  <label htmlFor="username">Email* :</label>
                   <input id="email" name="email" className="form-control"
-                         type="email"/>
+                         type="email" required/>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="username">Username:</label>
+                  <label htmlFor="username">Username* :</label>
                   <input id="username" name="username" className="form-control"
-                         type="text"/>
+                         type="text" required/>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="password">Password:</label>
+                  <label htmlFor="password">Password* :</label>
                   <input id="password" name="password" className="form-control"
-                         type="password"/>
+                         type="password" required/>
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit
