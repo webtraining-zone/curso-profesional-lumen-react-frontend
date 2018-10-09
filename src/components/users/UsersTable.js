@@ -8,6 +8,12 @@ class UsersTable extends React.Component {
     this.props.onDeleteUser(user);
   };
 
+  handleClickOnIconToUpdateUserStatus = (user) => {
+    // This function is passed as "prop"
+    user.status = user.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE';
+    this.props.onUpdateUserStatus(user);
+  };
+
   render() {
 
     const {users} = this.props;
@@ -21,6 +27,7 @@ class UsersTable extends React.Component {
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
+              <th scope="col">Status</th>
               <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -32,9 +39,18 @@ class UsersTable extends React.Component {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
-                    <i className="far fa-trash-alt"
+                    <a href="#"
+                       onClick={() => this.handleClickOnIconToUpdateUserStatus(
+                           user)}>
+                      {user.status}
+                    </a>
+                  </td>
+                  <td>
+                    <a href="#" className="btn btn-danger"
                        onClick={() => this.handleClickOnIconToDeleteUser(
-                           user)}></i>
+                           user)}>
+                      <i className="b-delete far fa-trash-alt"></i>
+                    </a>
                   </td>
                 </tr>))
             }

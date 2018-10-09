@@ -3,6 +3,8 @@ import UsersTable from './UsersTable';
 import UsersService from './services/UsersService';
 import {toast} from 'react-toastify';
 import UsersFormCreate from './UsersFormCreate';
+import './styles/Users.css';
+import UsersChart from './UsersChart';
 
 class UsersIndex extends React.Component {
 
@@ -13,9 +15,11 @@ class UsersIndex extends React.Component {
     const {users} = this.state;
 
     return (
-        <div className="container">
-          <UsersTable users={users} onDeleteUser={this.handleClickDeleteUser}/>
+        <div className="b-users">
+          <UsersTable users={users} onDeleteUser={this.handleClickDeleteUser}
+                      onUpdateUserStatus={this.handleClickUpdateUserStatus}/>
           <UsersFormCreate onCreateUser={this.handleOnCreateUser}/>
+          <UsersChart/>
         </div>
     );
   }
@@ -35,10 +39,39 @@ class UsersIndex extends React.Component {
         }));
   };
 
+  updateUserFromCurrentState = (userToUpdate) => {
+
+    console.log('userToDelete', userToUpdate);
+    this.setState(
+        prevState => {
+          // Find the user
+          const indexToUpdate = prevState.users.findIndex(
+              user => user.id === userToUpdate.id);
+
+          // Modify the user
+          prevState.users[indexToUpdate].status = userToUpdate.status;
+
+          // Return a new array with modified user
+          return {
+            users: [...prevState.users],
+          };
+
+        });
+  };
+
   handleOnCreateUser = (user) => {
     this.setState(prevState => ({
       users: [...prevState.users, user],
     }));
+  };
+
+  handleClickUpdateUserStatus = (user) => {
+    UsersService.updateUserStatus(user).then((response) => {
+      const user = response.data;
+      const {name, email} = user;
+      toast.success(`User updated: ${name} (${email})`);
+      this.updateUserFromCurrentState(user);
+    });
   };
 
   handleClickDeleteUser = (user) => {
