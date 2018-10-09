@@ -1,16 +1,11 @@
 import React from 'react';
-import UsersService from './services/UsersService';
-import {toast} from 'react-toastify';
 
 class UsersTable extends React.Component {
 
-  handleClickDeleteUser = (user) => {
-    console.log(user);
-
-    UsersService.deleteUser(user).then((response) => {
-      const {name, email} = response.data;
-      toast.success(`User deleted: ${name} (${email})`);
-    });
+  handleClickOnIconToDeleteUser = (user) => {
+    // This function is passed as "prop"
+    // See more about in: https://www.javascriptstuff.com/component-communication/#3-callback-functions
+    this.props.onDeleteUser(user);
   };
 
   render() {
@@ -38,7 +33,8 @@ class UsersTable extends React.Component {
                   <td>{user.email}</td>
                   <td>
                     <i className="far fa-trash-alt"
-                       onClick={() => this.handleClickDeleteUser(user)}></i>
+                       onClick={() => this.handleClickOnIconToDeleteUser(
+                           user)}></i>
                   </td>
                 </tr>))
             }
@@ -49,5 +45,9 @@ class UsersTable extends React.Component {
     );
   }
 }
+
+// UsersTable.propTypes = {
+//   onDeleteUser: React.PropTypes.func,
+// };
 
 export default UsersTable;

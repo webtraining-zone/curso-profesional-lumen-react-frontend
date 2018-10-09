@@ -17,8 +17,12 @@ class UsersFormCreate extends React.Component {
     const data = new FormData(event.target);
 
     UsersService.createUser(data).then((response) => {
-      const {name, email} = response.data;
+      const user = response.data;
+      const {name, email} = user;
       toast.success(`User created: ${name} (${email})`);
+
+      // Execute the callback passed by the parent
+      this.props.onCreateUser(user);
     });
 
   };
