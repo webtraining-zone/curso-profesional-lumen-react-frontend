@@ -20,21 +20,20 @@ class UsersIndex extends React.Component {
 
     return (
         <div className="b-users">
+
           <UsersTable users={users} onDeleteUser={this.handleClickDeleteUser}
                       onUpdateUserStatus={this.handleClickUpdateUserStatus}/>
 
-          <div className="container">
-            <div className="row">
-              <div className="col-12 col-sm-8 col-md-6">
-                <UsersFormCreate onCreateUser={this.handleOnCreateUser}/>
-              </div>
-              <div className="col-12 col-sm-4 col-md-6">
-                <UsersChart numberOfActiveUsers={numberOfActiveUsers}
-                            numberOfInactiveUsers={numberOfInactiveUsers}/>
-              </div>
-
+          <div className="row">
+            <div className="col-12 col-sm-8 col-md-6">
+              <UsersFormCreate onCreateUser={this.handleOnCreateUser}/>
+            </div>
+            <div className="col-12 col-sm-4 col-md-6">
+              <UsersChart numberOfActiveUsers={numberOfActiveUsers}
+                          numberOfInactiveUsers={numberOfInactiveUsers}/>
             </div>
           </div>
+          
         </div>
     );
   }

@@ -12,7 +12,7 @@ class UsersChart extends React.Component {
         'id': 'active',
         'label': 'active',
         'value': numberOfActiveUsers,
-        'color': 'hsl(301, 70%, 50%)',
+        'color': 'hsla(39, 100%, 50%, 1)',
       },
       {
         'id': 'inactive',
@@ -35,7 +35,7 @@ class UsersChart extends React.Component {
               innerRadius={0.5}
               padAngle={0.7}
               cornerRadius={3}
-              colors="nivo"
+              colors="set1"
               colorBy="id"
               borderWidth={1}
               borderColor="inherit:darker(0.2)"
