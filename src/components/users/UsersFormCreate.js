@@ -30,44 +30,39 @@ class UsersFormCreate extends React.Component {
   render() {
 
     return (
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-sm-8 col-md-6">
 
-              <h1>Create User</h1>
-              <form onSubmit={this.handleSubmitWithFormData} noValidate>
+        <div className="b-form">
 
-                <div className="form-group">
-                  <label htmlFor="name">Name* :</label>
-                  <input id="name" name="name" className="form-control"
-                         type="text" required/>
-                </div>
+          <h1>Create User</h1>
+          <form onSubmit={this.handleSubmitWithFormData} noValidate>
 
-
-                <div className="form-group">
-                  <label htmlFor="username">Email* :</label>
-                  <input id="email" name="email" className="form-control"
-                         type="email" required/>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="username">Username* :</label>
-                  <input id="username" name="username" className="form-control"
-                         type="text" required/>
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="password">Password* :</label>
-                  <input id="password" name="password" className="form-control"
-                         type="password" required/>
-                </div>
-
-                <button type="submit" className="btn btn-primary">Submit
-                </button>
-              </form>
+            <div className="form-group">
+              <label htmlFor="name">Name* :</label>
+              <input id="name" name="name" className="form-control"
+                     type="text" required/>
             </div>
 
-          </div>
+            <div className="form-group">
+              <label htmlFor="username">Email* :</label>
+              <input id="email" name="email" className="form-control"
+                     type="email" required/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="username">Username* :</label>
+              <input id="username" name="username" className="form-control"
+                     type="text" required/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Password* :</label>
+              <input id="password" name="password" className="form-control"
+                     type="password" required/>
+            </div>
+
+            <button type="submit" className="btn btn-primary">Submit
+            </button>
+          </form>
         </div>
     );
   }

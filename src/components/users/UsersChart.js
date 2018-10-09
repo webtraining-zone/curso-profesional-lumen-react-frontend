@@ -4,41 +4,26 @@ import {ResponsivePie} from '@nivo/pie';
 class UsersChart extends React.Component {
 
   render() {
+
+    const {numberOfActiveUsers, numberOfInactiveUsers} = this.props;
+
     const data = [
       {
-        'id': 'scala',
-        'label': 'scala',
-        'value': 588,
-        'color': 'hsl(232, 70%, 50%)',
-      },
-      {
-        'id': 'css',
-        'label': 'css',
-        'value': 236,
+        'id': 'active',
+        'label': 'active',
+        'value': numberOfActiveUsers,
         'color': 'hsl(301, 70%, 50%)',
       },
       {
-        'id': 'make',
-        'label': 'make',
-        'value': 245,
-        'color': 'hsl(330, 70%, 50%)',
-      },
-      {
-        'id': 'javascript',
-        'label': 'javascript',
-        'value': 256,
-        'color': 'hsl(83, 70%, 50%)',
-      },
-      {
-        'id': 'java',
-        'label': 'java',
-        'value': 38,
-        'color': 'hsl(91, 70%, 50%)',
+        'id': 'inactive',
+        'label': 'inactive',
+        'value': numberOfInactiveUsers,
+        'color': 'hsl(232, 70%, 50%)',
       },
     ];
+
     return (
-        <div className="">
-          Chart
+        <div className="b-users-chart" style={{height: 400}}>
           <ResponsivePie
               data={data}
               margin={{
@@ -90,51 +75,9 @@ class UsersChart extends React.Component {
               fill={[
                 {
                   'match': {
-                    'id': 'ruby',
+                    'id': 'inactive',
                   },
                   'id': 'dots',
-                },
-                {
-                  'match': {
-                    'id': 'c',
-                  },
-                  'id': 'dots',
-                },
-                {
-                  'match': {
-                    'id': 'go',
-                  },
-                  'id': 'dots',
-                },
-                {
-                  'match': {
-                    'id': 'python',
-                  },
-                  'id': 'dots',
-                },
-                {
-                  'match': {
-                    'id': 'scala',
-                  },
-                  'id': 'lines',
-                },
-                {
-                  'match': {
-                    'id': 'lisp',
-                  },
-                  'id': 'lines',
-                },
-                {
-                  'match': {
-                    'id': 'elixir',
-                  },
-                  'id': 'lines',
-                },
-                {
-                  'match': {
-                    'id': 'javascript',
-                  },
-                  'id': 'lines',
                 },
               ]}
               legends={[
