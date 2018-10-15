@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
-import UsersIndex from './components/users/UsersIndex';
-import Header from './components/common/header/Header';
+
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import Router from './routing/Router';
 
 class App extends Component {
   render() {
     return (
         <div className="App">
-          <Header/>
-          <div className="b-content container">
-            <UsersIndex/>
-          </div>
+
+          <Router/>
+
           <ToastContainer position="top-center"
                           autoClose={5000}
                           hideProgressBar={false}
