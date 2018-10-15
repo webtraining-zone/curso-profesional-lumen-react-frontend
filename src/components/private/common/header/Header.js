@@ -8,8 +8,9 @@ class Header extends React.Component {
         <header>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
-              <NavLink className="navbar-brand" to={'/'}>Project
-                Manager</NavLink>
+              <NavLink className="navbar-brand" to={'/'}>
+                <i className="fas fa-project-diagram"></i>
+                <span>&nbsp;Project Manager</span></NavLink>
               <button className="navbar-toggler" type="button"
                       data-toggle="collapse" data-target="#navbarRight"
                       aria-controls="navbarRight" aria-expanded="false"

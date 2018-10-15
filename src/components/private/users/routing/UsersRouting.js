@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import UsersIndex from './../UsersIndex';
+import UsersIndex from '../UsersIndex';
 
 const UsersRouting = () => (
     <Switch>

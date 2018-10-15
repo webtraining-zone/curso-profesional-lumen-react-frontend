@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import HomeIndex from './../components/home/HomeIndex';
-import UsersRouting from './../components/users/routing/UsersRouting';
-import Header from './../components/common/header/Header';
-import ProjectsRouting from '../components/projects/routing/ProjectsRouting';
+import PrivateHomeIndex from '../components/private/home/PrivateHomeIndex';
+import UsersRouting from '../components/private/users/routing/UsersRouting';
+import Header from '../components/private/common/header/Header';
+import ProjectsRouting from '../components/private/projects/routing/ProjectsRouting';
 
 const Router = () => {
   return (
@@ -12,7 +12,7 @@ const Router = () => {
           <Header/>
           <div className="b-content container">
             <Switch>
-              <Route exact path="/" component={HomeIndex}/>
+              <Route exact path="/" component={PrivateHomeIndex}/>
               <Route path="/users" component={UsersRouting}/>
               <Route path="/projects" component={ProjectsRouting}/>
             </Switch>

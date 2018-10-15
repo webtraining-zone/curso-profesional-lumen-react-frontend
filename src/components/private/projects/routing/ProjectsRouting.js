@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import ProjectsIndex from './../ProjectsIndex';
+import ProjectsIndex from '../ProjectsIndex';
 
 const ProjectsRouting = () => (
     <Switch>
