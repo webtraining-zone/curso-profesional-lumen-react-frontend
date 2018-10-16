@@ -39,17 +39,23 @@ class AuthenticationService {
 
     console.log('isUserAuthenticated', userData);
 
-    this.isAuthenticated = (!! userData &&
+    this.isAuthenticated = (!!userData &&
         typeof userData.api_token === 'string');
 
     return this.isAuthenticated;
   }
 
-  static logout(callback) {
-    this.isAuthenticated = false;
+  static logout() {
 
-    // TODO: Replace this with an actual login operation
-    setTimeout(callback, 400);
+    return new Promise((resolve, reject) => {
+      this.isAuthenticated = false;
+      SessionStorageService.remove(SESSION_STORAGE_USER_KEY);
+      resolve();
+
+      // TODO: Do you want to do something in the backend?
+      // Then send a request here to logout
+    });
+
   }
 
 }

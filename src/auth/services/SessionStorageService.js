@@ -7,6 +7,10 @@ class SessionStorageService {
   static get(key) {
     return JSON.parse(sessionStorage.getItem(key));
   }
+
+  static remove(key) {
+    return sessionStorage.removeItem(key);
+  }
 }
 
 export default SessionStorageService;

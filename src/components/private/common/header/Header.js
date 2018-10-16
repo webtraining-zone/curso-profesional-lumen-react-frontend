@@ -1,7 +1,18 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import AuthenticationService
+  from '../../../../auth/services/AuthenticationService';
 
 class Header extends React.Component {
+
+  handleLogout = () => {
+    AuthenticationService.logout().then(() => {
+      console.log('Logged out');
+
+      // TODO: Redirect to the public home
+    });
+  };
+
   render() {
     return (
         // https://bootswatch.com/lumen/
@@ -29,6 +40,11 @@ class Header extends React.Component {
                   <li className="nav-item">
                     <NavLink className="nav-link" to={'/projects'}
                              activeStyle={{color: '#158CBA'}}>Projects</NavLink>
+                  </li>
+
+                  <li className="nav-item">
+                    <a className="nav-link"
+                       onClick={this.handleLogout}>Logout</a>
                   </li>
 
                 </ul>
