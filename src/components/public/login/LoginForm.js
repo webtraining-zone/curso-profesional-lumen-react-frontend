@@ -22,14 +22,14 @@ class LoginForm extends React.Component {
 
     const data = new FormData(event.target);
 
-    console.log(data);
-
-    AuthenticationService.login(() => {
-      this.setState(() => ({
-        redirectToReferrer: true,
-      }));
+    AuthenticationService.login(data.get('username'), data.get('password')).
+        then(() => {
+          this.setState(() => ({
+            redirectToReferrer: true,
+          }));
+        }).catch(error => {
+      toast.error(`Couldn't start a session!`);
     });
-
   };
 
   render() {
