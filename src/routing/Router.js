@@ -3,7 +3,11 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import PrivateHomeIndex from '../components/private/home/PrivateHomeIndex';
 import UsersRouting from '../components/private/users/routing/UsersRouting';
 import Header from '../components/private/common/header/Header';
-import ProjectsRouting from '../components/private/projects/routing/ProjectsRouting';
+import ProjectsRouting
+  from '../components/private/projects/routing/ProjectsRouting';
+import LoginComponent from '../components/public/login/LoginComponent';
+import PrivateRoute from './PrivateRoute';
+import PublicHomeIndex from '../components/public/home/PublicHomeIndex';
 
 const Router = () => {
   return (
@@ -12,9 +16,11 @@ const Router = () => {
           <Header/>
           <div className="b-content container">
             <Switch>
-              <Route exact path="/" component={PrivateHomeIndex}/>
-              <Route path="/users" component={UsersRouting}/>
-              <Route path="/projects" component={ProjectsRouting}/>
+              <Route exact path="/" component={PublicHomeIndex}/>
+              <Route path="/login" component={LoginComponent}/>
+              <PrivateRoute path="/home" component={PrivateRoute}/>
+              <PrivateRoute path="/users" component={UsersRouting}/>
+              <PrivateRoute path="/projects" component={ProjectsRouting}/>
             </Switch>
           </div>
         </div>
