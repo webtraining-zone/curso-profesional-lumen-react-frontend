@@ -21,8 +21,10 @@ class LoginForm extends React.Component {
     }
 
     const data = new FormData(event.target);
+    const userName = data.get('username');
+    const password = data.get('password');
 
-    AuthenticationService.login(data.get('username'), data.get('password')).
+    AuthenticationService.login(userName, password).
         then(() => {
           this.setState(() => ({
             redirectToReferrer: true,

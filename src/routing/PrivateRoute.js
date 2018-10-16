@@ -7,7 +7,7 @@ import AuthenticationService from '../auth/services/AuthenticationService';
 const PrivateRoute = ({component: Component, ...rest}) => (
 
     <Route {...rest} render={(props) => (
-        AuthenticationService.isAuthenticated === true ?
+        AuthenticationService.isUserAuthenticated() === true ?
             <Component {...props}/> : <Redirect to={{
               pathname: '/login',
               state: {from: props.location},
