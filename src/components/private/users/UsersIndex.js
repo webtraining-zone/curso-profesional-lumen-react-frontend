@@ -19,21 +19,23 @@ class UsersIndex extends React.Component {
     const numberOfInactiveUsers = users.length - numberOfActiveUsers;
 
     return (
-        <div className="b-users">
+        <div className="b-content container">
+          <div className="b-users">
 
-          <UsersTable users={users} onDeleteUser={this.handleClickDeleteUser}
-                      onUpdateUserStatus={this.handleClickUpdateUserStatus}/>
+            <UsersTable users={users} onDeleteUser={this.handleClickDeleteUser}
+                        onUpdateUserStatus={this.handleClickUpdateUserStatus}/>
 
-          <div className="row">
-            <div className="col-12 col-sm-8 col-md-6">
-              <UsersFormCreate onCreateUser={this.handleOnCreateUser}/>
+            <div className="row">
+              <div className="col-12 col-sm-8 col-md-6">
+                <UsersFormCreate onCreateUser={this.handleOnCreateUser}/>
+              </div>
+              <div className="col-12 col-sm-4 col-md-6">
+                <UsersChart numberOfActiveUsers={numberOfActiveUsers}
+                            numberOfInactiveUsers={numberOfInactiveUsers}/>
+              </div>
             </div>
-            <div className="col-12 col-sm-4 col-md-6">
-              <UsersChart numberOfActiveUsers={numberOfActiveUsers}
-                          numberOfInactiveUsers={numberOfInactiveUsers}/>
-            </div>
+
           </div>
-          
         </div>
     );
   }

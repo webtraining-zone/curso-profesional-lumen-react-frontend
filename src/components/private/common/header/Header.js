@@ -2,18 +2,26 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import AuthenticationService
   from '../../../../auth/services/AuthenticationService';
+import {withRouter} from 'react-router-dom';
 
 class Header extends React.Component {
 
   handleLogout = () => {
     AuthenticationService.logout().then(() => {
-      console.log('Logged out');
+      console.log('Header >> handleLogout()');
 
-      // TODO: Redirect to the public home
+      // Re-set the state in the Router component
+      this.props.onLogout();
+
+      // Redirect to the public home
+      this.props.history.push('/');
     });
   };
 
   render() {
+
+    const {isUserAuthenticated} = this.props;
+
     return (
         // https://bootswatch.com/lumen/
         <header>
@@ -30,11 +38,11 @@ class Header extends React.Component {
               </button>
 
               <div className="collapse navbar-collapse" id="navbarRight">
+                {isUserAuthenticated &&
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
                     <NavLink className="nav-link" to={'/users'}
-                             activeStyle={{color: '#158CBA'}}>Users<span
-                        className="sr-only">(current)</span></NavLink>
+                             activeStyle={{color: '#158CBA'}}>Users</NavLink>
                   </li>
 
                   <li className="nav-item">
@@ -47,8 +55,14 @@ class Header extends React.Component {
                        onClick={this.handleLogout}>Logout</a>
                   </li>
 
-                </ul>
-
+                </ul>}
+                {!isUserAuthenticated &&
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to={'/login'}
+                             activeStyle={{color: '#158CBA'}}>Login</NavLink>
+                  </li>
+                </ul>}
               </div>
             </div>
           </nav>
@@ -57,4 +71,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);

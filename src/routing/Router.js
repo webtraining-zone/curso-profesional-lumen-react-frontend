@@ -8,24 +8,58 @@ import ProjectsRouting
 import LoginComponent from '../components/public/login/LoginComponent';
 import PrivateRoute from './PrivateRoute';
 import PublicHomeIndex from '../components/public/home/PublicHomeIndex';
+import AuthenticationService from '../auth/services/AuthenticationService';
 
-const Router = () => {
-  return (
-      <BrowserRouter>
-        <div>
-          <Header/>
+class Router extends React.Component {
 
-          <Switch>
-            <Route exact path="/" component={PublicHomeIndex}/>
-            <Route path="/login" component={LoginComponent}/>
-            <PrivateRoute path="/home" component={PrivateHomeIndex}/>
-            <PrivateRoute path="/users" component={UsersRouting}/>
-            <PrivateRoute path="/projects" component={ProjectsRouting}/>
-          </Switch>
+  state = {isUserAuthenticated: false};
 
-        </div>
-      </BrowserRouter>
-  );
+  constructor(props) {
+    super(props);
+    this.state.isUserAuthenticated = AuthenticationService.isUserAuthenticated();
+  }
+
+  onLogin = () => {
+    console.log('Router >> onLogin() from Router...');
+
+    this.setState((prevState) => ({
+      isUserAuthenticated: AuthenticationService.isUserAuthenticated(),
+    }));
+  };
+
+  onLogout = () => {
+    console.log('Router >> onLogout() from Router...');
+
+    this.setState((prevState) => ({
+      isUserAuthenticated: AuthenticationService.isUserAuthenticated(),
+    }));
+  };
+
+  render() {
+
+    const {isUserAuthenticated} = this.state;
+
+    return (
+        <BrowserRouter>
+          <div>
+            <Header isUserAuthenticated={isUserAuthenticated}
+                    onLogout={this.onLogout}/>
+
+            <Switch>
+              <Route exact path="/" component={PublicHomeIndex}/>
+              <Route path="/login"
+                     render={(props) =>
+                         <LoginComponent {...props} onLogin={this.onLogin}/>}/>
+              <PrivateRoute path="/home" component={PrivateHomeIndex}/>
+              <PrivateRoute path="/users" component={UsersRouting}/>
+              <PrivateRoute path="/projects" component={ProjectsRouting}/>
+            </Switch>
+
+          </div>
+        </BrowserRouter>
+    );
+  }
+
 };
 
 export default Router;

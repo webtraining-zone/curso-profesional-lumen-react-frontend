@@ -4,9 +4,7 @@ import UsersIndex from '../UsersIndex';
 
 const UsersRouting = () => (
     <Switch>
-      <div className="b-content container">
-        <Route exact path='/users' component={UsersIndex}/>
-      </div>
+      <Route exact path='/users' component={UsersIndex}/>
     </Switch>
 );
 
