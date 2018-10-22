@@ -35,7 +35,7 @@ class UsersChart extends React.Component {
               innerRadius={0.5}
               padAngle={0.7}
               cornerRadius={3}
-              colors="set1"
+              colors="nivo"
               colorBy="id"
               borderWidth={1}
               borderColor="inherit:darker(0.2)"
