@@ -14,15 +14,15 @@ const Router = () => {
       <BrowserRouter>
         <div>
           <Header/>
-          <div className="b-content container">
-            <Switch>
-              <Route exact path="/" component={PublicHomeIndex}/>
-              <Route path="/login" component={LoginComponent}/>
-              <PrivateRoute path="/home" component={PrivateHomeIndex}/>
-              <PrivateRoute path="/users" component={UsersRouting}/>
-              <PrivateRoute path="/projects" component={ProjectsRouting}/>
-            </Switch>
-          </div>
+
+          <Switch>
+            <Route exact path="/" component={PublicHomeIndex}/>
+            <Route path="/login" component={LoginComponent}/>
+            <PrivateRoute path="/home" component={PrivateHomeIndex}/>
+            <PrivateRoute path="/users" component={UsersRouting}/>
+            <PrivateRoute path="/projects" component={ProjectsRouting}/>
+          </Switch>
+
         </div>
       </BrowserRouter>
   );

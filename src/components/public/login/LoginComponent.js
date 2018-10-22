@@ -5,9 +5,13 @@ class LoginComponent extends React.Component {
   render() {
     const {location} = this.props;
 
-    return (<div>
-      <LoginForm location={location}/>
-    </div>);
+    return (
+        <div className="container">
+          <div className="mt-5">
+            <LoginForm location={location}/>
+          </div>
+        </div>
+    );
   }
 }
 

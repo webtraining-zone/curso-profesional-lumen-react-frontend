@@ -13,3 +13,16 @@
     padding: 20px 20px 40px 20px;
     box-shadow: 0 8px 15px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
 }
+
+.b-home__title {
+    margin-top: 120px;
+    font-size: 4rem;
+}
+
+.b-home__summary {
+    font-size: 2rem;
+}
+
+.b-home__image {
+    margin-top: 20px;
+}

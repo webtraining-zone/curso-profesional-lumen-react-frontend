@@ -4,7 +4,9 @@ import ProjectsIndex from '../ProjectsIndex';
 
 const ProjectsRouting = () => (
     <Switch>
-      <Route exact path='/projects' component={ProjectsIndex}/>
+      <div className="b-content container">
+        <Route exact path='/projects' component={ProjectsIndex}/>
+      </div>
     </Switch>
 );
 
