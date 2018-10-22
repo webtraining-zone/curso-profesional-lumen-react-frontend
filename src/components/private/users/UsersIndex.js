@@ -41,8 +41,9 @@ class UsersIndex extends React.Component {
   }
 
   componentDidMount() {
-    UsersService.getAllUsers().
-        then((response) => this.setState({users: response.data}));
+    UsersService.getAllUsers().then((response) => {
+      this.setState({users: response.data});
+    });
   }
 
   removeUserFromCurrentState = (userToDelete) => {

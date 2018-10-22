@@ -51,16 +51,19 @@ class Header extends React.Component {
                   </li>
 
                   <li className="nav-item">
-                    <a className="nav-link"
-                       onClick={this.handleLogout}>Logout</a>
+                    <button className="btn btn-danger"
+                            onClick={this.handleLogout}>
+                      <i className="fas fa-sign-out-alt"></i>
+                      <span className={'sr-only'}>Logout</span>
+                    </button>
                   </li>
 
                 </ul>}
                 {!isUserAuthenticated &&
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
-                    <NavLink className="nav-link" to={'/login'}
-                             activeStyle={{color: '#158CBA'}}>Login</NavLink>
+                    <NavLink className="btn btn-primary"
+                             to={'/login'}>Login</NavLink>
                   </li>
                 </ul>}
               </div>

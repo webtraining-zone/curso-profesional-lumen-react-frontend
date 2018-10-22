@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class PublicHomeIndex extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class PublicHomeIndex extends React.Component {
                 professional life and deliver products and services clients will love.
               </p>
               <p>
-                <a href="#" className="btn btn-warning">Start now</a>
+                <Link className="btn btn-warning" to={"/users"}>Start now</Link>
               </p>
             </div>
             <div className="col-12 col-md-5 col-lg-5 col-xl-5">

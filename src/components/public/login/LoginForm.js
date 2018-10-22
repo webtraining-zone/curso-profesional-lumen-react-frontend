@@ -24,17 +24,17 @@ class LoginForm extends React.Component {
     const userName = data.get('username');
     const password = data.get('password');
 
-    AuthenticationService.login(userName, password).
-        then(() => {
-          // TODO: Emit an event, so other component can know
-          console.log('LoginForm >> Trigger the onLogin() callback, before redirecting...');
-          this.props.onLogin();
+    AuthenticationService.login(userName, password).then(() => {
+      // Emit an event, so other component can know something has occurred:
+      console.log(
+          'LoginForm >> Trigger the onLogin() callback, before redirecting...');
+      this.props.onLogin();
 
-          this.setState(() => ({
-            redirectToReferrer: true,
-          }));
+      this.setState(() => ({
+        redirectToReferrer: true,
+      }));
 
-        }).catch(error => {
+    }).catch(error => {
       console.error(error);
       toast.error(`Couldn't start a session!`);
     });

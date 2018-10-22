@@ -19,18 +19,17 @@ class AuthenticationService {
       const requestData = {username: username, password: password};
       const requestConfig = {headers: headers};
 
-      axios.post(requestURL, requestData, requestConfig).
-          then((response) => {
+      axios.post(requestURL, requestData, requestConfig).then((response) => {
 
-            const userData = response.data;
-            this.isAuthenticated = true;
-            this.userData = userData;
+        const userData = response.data;
+        this.isAuthenticated = true;
+        this.userData = userData;
 
-            SessionStorageService.set(SESSION_STORAGE_USER_KEY, userData);
+        SessionStorageService.set(SESSION_STORAGE_USER_KEY, userData);
 
-            resolve(userData);
+        resolve(userData);
 
-          }).catch(error => reject(error));
+      }).catch(error => reject(error));
     });
   }
 

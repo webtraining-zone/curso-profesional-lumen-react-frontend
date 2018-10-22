@@ -39,18 +39,18 @@ class UsersTable extends React.Component {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
-                    <a href="#"
-                       onClick={() => this.handleClickOnIconToUpdateUserStatus(
-                           user)}>
+                    <button className={user.status==="ACTIVE"? "btn btn-success" : "btn btn-warning"}
+                        onClick={() => this.handleClickOnIconToUpdateUserStatus(
+                            user)}>
                       {user.status}
-                    </a>
+                    </button>
                   </td>
                   <td>
-                    <a href="#" className="btn btn-danger"
-                       onClick={() => this.handleClickOnIconToDeleteUser(
-                           user)}>
+                    <button className="btn btn-danger"
+                            onClick={() => this.handleClickOnIconToDeleteUser(
+                                user)}>
                       <i className="b-delete far fa-trash-alt"></i>
-                    </a>
+                    </button>
                   </td>
                 </tr>))
             }
