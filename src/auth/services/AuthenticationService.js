@@ -38,8 +38,8 @@ class AuthenticationService {
 
     console.log('isUserAuthenticated', userData);
 
-    this.isAuthenticated = (!!userData &&
-        typeof userData.api_token === 'string');
+    this.isAuthenticated = (!!userData && typeof userData.api_token ===
+        'string');
 
     return this.isAuthenticated;
   }
